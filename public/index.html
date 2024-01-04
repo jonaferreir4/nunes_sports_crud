@@ -1,53 +1,65 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="style.css">
-  <title>Nunes Sports CRUD</title>
+  <title>CRUD de Produtos</title>
 </head>
 <body>
+  <header class="header">
+    <h1>CRUD de Produtos</h1>
+  </header>
   <div class="container">
-    <h1 class="display-4">Nunes Sports - CRUD de Produtos</h1>
+    <div class="bloco-1">
+      <div class="search-create">
 
-    <!-- Formulário para GET (Listar Produtos) -->
-    <form id="getProductsForm" action="/products" method="GET">
-      <input type="hidden" name="action" value="listar">
-      <button type="submit" class="btn btn-primary">Listar Produtos</button>
-    </form>
-
-    <!-- Formulário para POST (Adicionar Produto) -->
-    <form id="addProductForm" action="/products" method="POST">
-      <input type="hidden" name="action" value="adicionar">
-      <div class="form-group">
-        <label for="productName">Nome:</label>
-        <input type="text" class="form-control" id="productName" name="productName" required>
+        <div class="pesquisar">
+          <label for="search"></label>
+          <input type="text" id="search" placeholder="Pesquisar Produto" oninput="searchProduct()">
+          <button class="button-search" type="button" onclick="searchProduct()"> Pesquisar</button>
+        </div>
+        
+        <div class="create">
+          <button class="button-create" type="button" onclick="openCreatePopup()">Novo Produto</button>
+        </div>
       </div>
+      
+      <table id="product-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Descrição</th>
+            <th>Preço</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Os dados da tabela serão inseridos dinamicamente aqui -->
+        </tbody>
+      </table>
+    </div>
 
-      <div class="form-group">
-        <label for="productCode">Código:</label>
-        <input type="text" class="form-control" id="productCode" name="productCode" required>
-      </div>
-
-      <div class="form-group">
-        <label for="productDescription">Descrição:</label>
-        <input type="text" class="form-control" id="productDescription" name="productDescription" required>
-      </div>
-
-      <div class="form-group">
-        <label for="productPrice">Preço:</label>
-        <input type="number" class="form-control" id="productPrice" name="productPrice" step="0.01" required>
-      </div>
-
-      <button type="submit" class="btn btn-success">Adicionar Produto</button>
-    </form>
   </div>
 
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
+  <div id="popup" class="popup">
+    <div class="popup-content">
+      <span class="close" onclick="closePopup()">&times;</span>
+      <form id="create-product-form">
+        <h2>Novo Produto</h2>
+        <label for="newProductName">Nome:</label>
+        <input type="text" id="newProductName" required>
+        <label for="newProductDescription">Descrição:</label>
+        <textarea name="newProductDescription" id="newProductDescription" cols="30" rows="5"></textarea>
+        <label for="newProductPrice">Preço:</label>
+        <input type="number" id="newProductPrice" required>
+        <button class="button-create" type="button" onclick="createProduct()">Criar Produto</button>
+      </form>
+    </div>
+  </div>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
   <script src="index.js"></script>
 </body>
 </html>

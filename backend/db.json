@@ -1,0 +1,28 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "name": "Jona Ferreira de Sousa",
+      "email": "jonaferreira@gmail.com"
+    },
+    {
+      "id": "2",
+      "name": "Maria da Conceição Ladislau Ferreira",
+      "email": "mariadaconceicao@gmail.com"
+    }
+  ],
+  "products": [
+    {
+      "id": "2",
+      "name": "Bola de Futebol",
+      "brand": "Penalty",
+      "price": 90
+    },
+    {
+      "id": "334d",
+      "name": "Chuteira de  Futebol",
+      "brand": "Mizuno",
+      "price": "123"
+    }
+  ]
+}
